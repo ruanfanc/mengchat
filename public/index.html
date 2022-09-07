@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,12 +22,13 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+  <title>React App</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -39,5 +38,47 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>
+<script type="text/javascript" charset="utf-8">
+  // //element 24栅栏布局是将页面等分为24份
+  // (function rem() {
+  //   let fonts = document.documentElement.clientWidth / 120
+  //   //我们获取到document.documentElement.clientWidth 即当前浏览器宽度 等分为120份
+  //   // 一份的大小 在1440屏幕下 为12px， 在1920屏幕下 为16px
+  //   if (fonts <= 12) {
+  //     fonts = 12;
+  //     document.documentElement.style.fontSize = fonts + "px"
+  //     //当字体小于12 即1440 屏幕以下  我们让其为12
+  //     document.documentElement.style.minWidth = '1440px'
+  //     //同时设置屏幕的最小宽度为1440px
+  //   } else if (fonts > 12 && fonts <= 16) {
+  //     //如果在12--16之间  我们认为 此时屏幕宽度为 1440-1920之间  就可以使用
+  //     document.documentElement.style.fontSize = document.documentElement.clientWidth / 120 + 'px';
+  //   }
+  //   window.onresize = rem;
+  //   //window的窗口发生变化时  执行rem 函数
+  //   // 想必您已经知道了  我们在设置css 的单位时   将使用 rem
+  //   // 比如  设计图  1920下 为100px   那么此时的单位应该为 6.25rem
+  // })()
+
+  function resizeCount() {
+    const baseConstn = 120
+    const nowWidth = document.documentElement.clientWidth
+    const nowCount = nowWidth / baseConstn
+    if (nowCount <= 12) {
+      nowCount = 12
+    }
+    document.querySelector('html').style.fontSize = nowCount + 'px'
+  }
+  // 初始化
+  resizeCount()
+
+  window.addEventListener('resize', () => {
+    // resizeCount()
+  })
+
+
+
+</script>
