@@ -1,0 +1,18 @@
+.chatBefore::before{
+    width: 0px;
+	height: 0px;
+    border:0.7rem solid transparent;
+	border-right: 0.7rem solid rgba(243, 244, 246);
+	position: absolute;
+	left: -1.3rem;
+	content: "";
+}
+.chatAfter::before{
+    width: 0px;
+	height: 0px;
+    border:0.7rem solid transparent;
+	border-left: 0.7rem solid rgba(191, 219, 254);
+	position: absolute;
+	left:calc(100% - 0.1rem);
+	content: "";
+}
