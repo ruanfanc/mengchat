@@ -53,7 +53,7 @@ export default function Chat() {
                     friends ? friends!.map((friend, index) => {
                         return <div className={index === nowIndex ? 'w-full h-20 bg-gray-300 flex items-center' : 'w-full h-20 flex items-center'} key={friend.id} onClick={() => { changeChat(index, friend.friend) }}>
                             <Badge dot={friend.isread === 0}  >
-                                <Avatar size={40} shape='square' icon={<UserOutlined />} className=' ml-4' />
+                                <Avatar size={40} shape='square' icon={<UserOutlined />} src={friend.avatar} className=' ml-4' />
                             </Badge>
                             <div className=' flex flex-col  ml-4 justify-between h-12 '>
                                 <span className='w-44  text-lg font-medium truncate ...'>{friend.friend}</span>
@@ -68,7 +68,7 @@ export default function Chat() {
                     }) : <div></div>
                 }
             </div >
-            {chatName === '' ? <div></div> : <ChatBox setFriends={setFriends} chatName={chatName} index={nowIndex} setNowIndex={setNowIndex} />}
+            {chatName === '' ? <div></div> : <ChatBox setFriends={setFriends} chatName={chatName} index={nowIndex} setNowIndex={setNowIndex} friendImg={friends[nowIndex].avatar} />}
 
         </div>
 

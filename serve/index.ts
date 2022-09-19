@@ -30,14 +30,18 @@ export const sessionMiddleware = session({
     }
 })
 
+const cors = require('cors')
+import path from "path";
 
 // 配置请求体
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(sessionMiddleware)// 配置session中间件
+app.use(cors())
 app.use('/user', userRouter)
 app.use('/chat', chatRouter)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 // app.use((req: any, res, next) => {
 //     const { url, session: { user } } = req;
 //     if (url.indexOf('/login') > -1 || url.indexOf('register') > -1) {
@@ -53,7 +57,6 @@ app.use('/chat', chatRouter)
 //         }
 //     }
 // })
-
 import './socket/index';//引入socket
 server.listen(4000, () => {
 })
