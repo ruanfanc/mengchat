@@ -9,12 +9,14 @@ import { getNowTime } from '../../../../utils/time';
 import { friend } from '../../../../models/user';
 
 
-export default function ChatBox(props: { chatName: string, setFriends: any, index: number, setNowIndex: any }) {
+export default function ChatBox(props: { friendImg: string, chatName: string, setFriends: any, index: number, setNowIndex: any }) {
     const { TextArea } = Input;
     const [inputValue, setinputValue] = useState('')
     const [infos, setinfos] = useState<information[]>([])
     const info = useRef<any>(null)
     const chatBox = useRef<any>(null)
+    let userimg: string = JSON.parse(localStorage.getItem('userInfo')!).avatar
+
     let username = localStorage.getItem('name')!
     useEffect(() => {
         // 传入setState
@@ -32,7 +34,7 @@ export default function ChatBox(props: { chatName: string, setFriends: any, inde
             const result = await reqPriInfo<informations>({ fromname: username, toname: name })
             setinfos(result.data.informations)
         }
-  
+
     }, [props.chatName, username])
     useEffect(() => {
         chatBox.current.scrollTop = chatBox.current.scrollHeight - chatBox.current.offsetHeight
@@ -74,6 +76,7 @@ export default function ChatBox(props: { chatName: string, setFriends: any, inde
         })
         props.setNowIndex(0)
     }
+
     return (
         <div className="w-144">
             <div className="h-20 w-full  border-b flex items-center pl-8 font-medium  ">
@@ -85,13 +88,13 @@ export default function ChatBox(props: { chatName: string, setFriends: any, inde
                     infos!.length > 0 ? infos!.map((info, index) => {
                         if (info.fromname === props.chatName) {
                             return <div className='flex mb-4' key={index}>
-                                <Avatar shape='square' icon={<UserOutlined />} className=" h-12 w-12" />
+                                <Avatar shape='square' icon={<UserOutlined />} src={props.friendImg} className=" h-12 w-12" />
                                 <p className=" max-w-xs ml-4  p-3  break-all ...  text-xl bg-gray-100 chatBefore relative ">{info.message}</p>
                             </div>
                         } else {
                             return <div className="flex ml-auto  mb-4" key={index}>
                                 <p className=" max-w-xs mr-4  p-3  break-all ...  text-xl bg-blue-200 chatAfter relative ">{info.message}</p>
-                                <Avatar shape='square' icon={<UserOutlined />} className=" h-12 w-12" />
+                                <Avatar shape='square' icon={<UserOutlined />} src={userimg} className=" h-12 w-12" />
                             </div>
                         }
 

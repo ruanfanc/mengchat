@@ -21,7 +21,7 @@ class SessionStore {
     // 保存chatName  
     saveChatName(userName: string, chatName: string): void {
         let session = this.sessions.get(userName)!
-        this.sessions.set(userName, { ...session, chatName })
+        this.sessions.set(userName, { ...session, chatName }) 
     }
     // 返回chatName  
     findchatName(userName: string): string | undefined {

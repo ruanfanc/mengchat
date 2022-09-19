@@ -1,4 +1,4 @@
-import { userInfo } from "../models/user";
+import { Info, userInfo } from "../models/user";
 import { requests } from "./requests";
 
 // 注册
@@ -12,4 +12,9 @@ export const reqlogout = () => requests({ url: "/user/logout", method: "POST" })
 // 判断是否登录
 export const reqIfLogin = () => requests({ url: "/user/ifLogin", method: "POST" })
 // 获取好友列表
-export const reqFriends = <T>(name: string) => requests<T>({ url: `/user/friends?name=${name}`, method: "POST" }) 
+export const reqFriends = <T>(name: string) => requests<T>({ url: `/user/friends?name=${name}`, method: "POST" })
+// 更新用户信息 
+export const reqEditInfo = (data: Info) => requests({ url: "/user/editInfo", data, method: "POST" })
+// 获取好友信息  
+export const reqFriendInfo = <T>(data: { friend: string }) => requests<T>({ url: "/user/friendInfo", data, method: "POST" })
+

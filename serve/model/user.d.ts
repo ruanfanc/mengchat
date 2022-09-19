@@ -12,7 +12,8 @@ export interface friend {
     time: string;
     talk: number;
     isread: number;
-    lastInfo: string
+    lastInfo: string;
+    avatar: string;
 }
 
 export interface friendsType {

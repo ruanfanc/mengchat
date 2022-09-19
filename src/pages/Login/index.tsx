@@ -28,6 +28,7 @@ export default function Login() {
       })
       if (result.status) {
         localStorage.setItem("name", result.data.userName!)
+        localStorage.setItem('userInfo', JSON.stringify(result.data.Info))
         // 动态路由切换
         dispatch(changeCookie())
         navigate("../home/chat", { replace: true })
